@@ -1,0 +1,77 @@
+/*
+====================================
+SASS Variables
+====================================
+*/
+
+//Column Flex
+@mixin column{
+	display:flex;
+	flex-direction:column;
+}
+
+/* Fonts */
+$bodyFont: 'Work Sans', sans-serif;
+$accentFont: 'Montserrat', sans-serif;
+
+
+/* Colours */
+$primary: #011936; //Dark Blue
+$secondary: #F4FFFD; //Peach
+$tertiary: #F9DC5C; //Light Blue
+$quat:#ED254E; //Teal
+$quint:#465362; //Green
+
+//Provides cutout header
+ @mixin cutout{
+	 background-color: #0a4062;
+   color: #dbc1aa;
+   display: inline-block;
+   border: none;
+   font-weight:700;
+}
+
+
+//Inverts colors, useful for headers
+@mixin invert{
+	background:$secondary;
+	color:$primary;
+}
+
+
+/* Margin & Padding */
+$margin: 5% 0;
+$padding: 5% 10%;
+
+
+//Displays content in a padded column, useful for home page sections
+@mixin subcontent {
+	display:flex;
+	flex-direction:column;
+	padding:2%;
+}
+
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+   @if $point == xl {
+     @media (min-width: 1500px) { @content ; }
+  }
+   @else if $point == lg {
+     @media (max-width: 1400px) { @content ; }
+  }
+   @else if $point == md {
+     @media (max-width: 1199px) { @content ; }
+  }
+    @else if $point == sm {
+     @media (max-width: 992px) { @content ; }
+  }
+  @else if $point == xs {
+     @media (max-width: 767px)  { @content ; }
+  }
+  @else if $point == xxs {
+     @media (max-width: 370px)  { @content ; }
+  }
+}

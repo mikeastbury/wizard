@@ -1,0 +1,121 @@
+/*
+====================================
+Typography Defaults
+====================================
+*/
+
+body{
+	font-size:10px;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	font-size: 1.2rem;
+	cursor: pointer;
+	&:hover {
+		color: $tertiary;
+	}
+}
+
+/* paragraphs */
+
+p {
+	line-height: 1.8;
+	font-size: 1.9rem;
+	color:white;
+}
+
+/*blockquotes*/
+
+blockquote {
+	background: $quat;
+	margin: 0;
+	padding: 20px;
+	p {
+		margin-top: 0;
+	}
+}
+
+/*tables*/
+
+table {
+	td {
+		padding: 10px;
+	}
+	tr td:first {
+		padding-right: 0;
+	}
+}
+
+/*def lists*/
+
+dt {
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+dd {
+	padding: 10px;
+	margin-left: 10px;
+}
+
+/*lists*/
+
+ul {
+	list-style:none;
+	padding-left: 0;
+}
+
+ol,
+dl {
+	line-height: 1.8;
+	font-size: 1.8rem;
+	color:white;
+}
+
+
+ul li, ol li {
+	padding: 3px;
+}
+
+/*PRE*/
+
+pre {
+	background: $quat;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+/* span */
+
+/*figure */
+figure {
+    margin: 0;
+}
+
+/* HEADERS */
+h1{
+	font-size: 3.2rem;
+}
+
+h2{
+	font-size: 2.4rem;
+}
+
+h3{
+	font-size: 1.9rem;
+}
+
+h4{
+	font-size: 1.6rem;
+}
+
+h5{
+	font-size: 1.3rem;
+}
+
+h6{
+	font-size: 1rem;
+}

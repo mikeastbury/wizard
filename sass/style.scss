@@ -1,0 +1,24 @@
+/*!
+* Theme Name: WIZARD THEME
+* Description: THEME FOR WIZARD
+* Version: 1.0
+* Author: Mike Astbury
+* Author URI: http://www.mikeastbury.pizza
+*/
+@import "node_modules/bulma/sass/utilities/_all.sass";
+@import "node_modules/bulma/sass/base/_all.sass";
+@import "node_modules/bulma/sass/elements/_all.sass";
+@import "node_modules/bulma/sass/components/_all.sass";
+@import "node_modules/bulma/sass/grid/_all.sass";
+@import "node_modules/bulma/sass/layout/_all.sass";
+@import 'normalize';
+@import 'variables';
+@import 'typography';
+@import 'global';
+@import 'overwrites';
+
+/*
+====================================
+Default Styling
+====================================
+*/
