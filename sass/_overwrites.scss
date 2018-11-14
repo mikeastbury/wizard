@@ -1,0 +1,26 @@
+header {
+    background-color: $primary;
+
+    .title {
+        font-size: 4rem;
+        text-align: center;
+        color: $quat;
+    }
+}
+
+.sectionOne {
+    .title {
+        color: $tertiary;
+        background-color: $quint;
+        text-align: center;
+        padding: 20px 0;
+    }
+}
+
+/***************Add player*****************/
+.button.is-primary {
+    font-size: 1.8rem;
+    background-color: $quat;
+    color: $tertiary;
+    .addPlayer {}
+}

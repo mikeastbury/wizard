@@ -12,6 +12,9 @@ body {
     background-color: $secondary;
     color: $primary;
     font-family:$bodyFont;
+    p {
+        font-size: 2rem;
+    }
 }
 
 img,
@@ -54,7 +57,7 @@ a {
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 600px;
 	margin: 0 auto;
     padding: 0 15px;
 }
