@@ -1,16 +1,21 @@
 let STATE = {
-    playerDetails: [],
-    numberOfPlayers: 1,
+    playerDetails: [{
+        name: 'Player 1'
+    }, {
+        name: 'Player 2'
+    }, {
+        name: 'Player 3'
+    }],
     currentRound: 0,
+    maxPlayers: 5,
     maxRounds: 0
 }
 
-function firstLoad() {
-    var i = 0;
-    for (i = 0; i < 3; i++) {
-        drawPlayer();
-        createPlayerArray();
-    }
+function init() {
+    attachEventHandlers();
+    STATE.playerDetails.forEach(player => {
+        drawPlayer(player);
+    });
 }
 
 function createPlayerArray() {
@@ -22,43 +27,48 @@ function createPlayerArray() {
 }
 
 function addPlayer() {
-    $('.addPlayer').click(function() {
-        drawPlayer();
-        createPlayerArray();
+    const newPlayer = {name: 'Mike'};
+    STATE.playerDetails.push(newPlayer);
+    drawPlayer(newPlayer);
+}
+
+function attachEventHandlers() {
+    $('.addPlayer').click(function () {
+        addPlayer();
         //remove add player button at max
-        if (STATE.numberOfPlayers > 6) {
+        if (STATE.playerDetails.length > STATE.maxPlayers) {
             $('.addPlayer').addClass('hidden');
         }
     });
 };
 
-// function addName() {
-//     $('.addName').click(function() {
-//         let name = "Mike";
-//         let players = STATE.playerDetails;
-//     })
-// }
 
-function drawPlayer(createPlayerArray) {
-    const playerNumber = STATE.numberOfPlayers;
+function drawPlayer(player) {
     $('.playersAndNames').append(
         `
-            <div class="columns">
-                <div class="column">
-                    <p>Player ${playerNumber}</p>
-                </div>
-                <div class="column">
-                    <input class="input" type="text" placeholder="Name">
-                </div>
-            </div>
+        <div class="columns">
+        <div class="column">
+        <p>${player.name}</p>
+        </div>
+        <div class="column">
+        <input class="input" type="text" placeholder="Name">
+        </div>
+        </div>
         `
     )
 };
 
 
+// function testButton() {
+//     $('.testButton').click(function() {
+
+//     })
+// }
 
 $(document).ready(function () {
-    firstLoad();
-    addPlayer();
-    createPlayerArray();
+    // firstLoad();
+    // addPlayer();
+    // addPlayerButton();
+    // createPlayerArray();
+    init();
 });
