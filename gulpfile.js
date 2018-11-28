@@ -2,6 +2,9 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
     autoprefixer = require('gulp-autoprefixer'),
+    handlebars = require('gulp-handlebars'),
+    wrap = require('gulp-wrap'),
+    declare = require('gulp-declare'),
     concat = require('gulp-concat'),
     minifyCSS = require('gulp-clean-css'),
     notify = require('gulp-notify'),
@@ -34,6 +37,18 @@ gulp.task('styles', function() {
         .pipe(reload({ stream: true }));
 });
 
+gulp.task('templates', function () {
+    gulp.src('templates/*.hbs')
+        .pipe(handlebars())
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            namespace: 'MyApp.templates',
+            noRedeclare: true, // Avoid duplicate declarations
+        }))
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('build/js/'));
+});
+
 gulp.task('scripts', function() {
     return gulp.src([
             'node_modules/babel-polyfill/dist/polyfill.js',
@@ -63,9 +78,10 @@ gulp.task('scripts', function() {
 
 // configure which files to watch and what tasks to use on file changes
 gulp.task('watch', function() {
+    gulp.watch('templates/**/*.hbs', ['templates']);
     gulp.watch('sass/**/*.scss', ['styles']);
     gulp.watch('./js/**/*.js', ['scripts']);
     gulp.watch('./**/*.html', reload);
 });
 
-gulp.task('default', ['styles', 'scripts', 'bs', 'watch']);
+gulp.task('default', ['styles', 'scripts', 'bs', 'templates', 'watch']);
