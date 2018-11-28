@@ -1,20 +1,23 @@
 let STATE = {
     playerDetails: [{
         name: 'Player 1',
-        bet: '',
-        tricks: '',
-        totalScore: ''
+        id: 1,
+        bet: 0,
+        tricks: 0,
+        totalScore: 0
     }, {
         name: 'Player 2',
-        bet: '',
-        tricks: '',
-        totalScore: ''
+        id: 2,
+        bet: 0,
+        tricks: 0,
+        totalScore: 0
     }, {
         name: 'Player 3',
-        bet: '',
-        tricks: '',
-        totalScore: ''
-    }], 
+        id: 3,
+        bet: 0,
+        tricks: 0,
+        totalScore: 0
+    }],
     currentRound: 0,
     maxPlayers: 5,
     maxRounds: 0
@@ -44,17 +47,26 @@ function attachEventHandlers() {
     $('.nextRound').click(function () {
         getBets();
     });
-    $('.testButton').click(function() {
-        let enteredName = $('.nameField').val();
-        let userName = {name: enteredName};
-        STATE.playerDetails.push(userName);
+    $('.testButton').click(function () {
+        STATE.playerDetails.forEach(player => {
+            player.name = $('#nameField-' + player.id).val();
+            $('#name-'+player.id).text(player.name);
+
+        });
+        
         console.log(STATE);
     })
 };
 
 function addPlayer() {
     const numberOfPlayers = STATE.playerDetails.length + 1;
-    const newPlayer = {name: 'Player '+ numberOfPlayers};
+    const newPlayer = {
+        name: 'Player ' + numberOfPlayers,
+        id: numberOfPlayers,
+        bet: 0,
+        tricks: 0,
+        totalScore: 0
+    };
     STATE.playerDetails.push(newPlayer);
     drawPlayer(newPlayer);
 }
@@ -63,8 +75,8 @@ function addPlayer() {
 
 // }
 
-function drawTitle(){
-    $('h2.title').append (
+function drawTitle() {
+    $('h2.title').append(
         `How many players?`
     )
 }
@@ -74,10 +86,10 @@ function drawPlayer(player) {
         `
         <div class="columns">
         <div class="column">
-        <p>${player.name}</p>
+        <p id="name-${player.id}">${player.name}</p>
         </div>
         <div class="column">
-        <input class="input nameField" type="text" placeholder="Name">
+        <input class="input nameField" id="nameField-${player.id}" type="text" placeholder="Name">
         </div>
         </div>
         `
@@ -85,8 +97,8 @@ function drawPlayer(player) {
 };
 
 function getBets() {
-    $('.nextRound').html (
-`<div class="columns">
+    $('.nextRound').html(
+        `<div class="columns">
 <div class="tile">
     <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">

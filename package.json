@@ -20,6 +20,7 @@
     "gulp-babel": "^7.0.1",
     "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.0",
+    "gulp-handlebars": "^5.0.2",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^4.0.1",
@@ -36,6 +37,7 @@
   },
   "homepage": "https://github.com/mikeastbury/wizard#readme",
   "dependencies": {
-    "bulma": "^0.7.2"
+    "bulma": "^0.7.2",
+    "handlebars": "^4.0.12"
   }
 }
